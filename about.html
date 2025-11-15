@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About School | PM SHRI UPPER PRIMARY SCHOOL CHIRAWAK</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Basic reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family: "Open Sans", Arial, sans-serif;color:#2E2E2E;background:#ffffff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+    :root{
+      --primary-orange:#F7931E;
+      --accent-red:#E94A2B;
+      --accent-purple:#7030A0;
+      --page-gutter:#D38A12;
+      --nav-navy:#14294A;
+      --footer-blue:#203a67;
+      --text-dark:#2E2E2E;
+      --white:#ffffff;
+    }
+
+    /* Page gutters */
+    body{
+      background: linear-gradient(90deg,var(--page-gutter) 0 80px, transparent 80px calc(100% - 80px), var(--page-gutter) calc(100% - 80px) 100%);
+      margin:0;
+    }
+
+    /* Top mini header */
+    .top-mini {
+      background: #fff;
+      padding: 10px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:4px solid var(--primary-orange);
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .top-mini .title {
+      font-family: "Merriweather", Georgia, serif;
+      font-weight:700;
+      font-size:26px;
+      color:var(--nav-navy);
+      letter-spacing:1px;
+    }
+    .top-mini .small-links{
+      font-size:13px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .small-links a{color:#333;text-decoration:none;font-weight:600}
+
+    /* Main nav */
+    nav.main-nav{
+      background:var(--nav-navy);
+      color:var(--white);
+      padding:12px 20px;
+      border-top:6px solid #C78C12;
+      position: sticky;
+      top: 67px; /* Height of top-mini */
+      z-index: 99;
+    }
+    nav.main-nav .menu {
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      list-style:none;
+    }
+    nav.main-nav a{color:var(--white);text-decoration:none;font-weight:700;letter-spacing:1px;font-size:14px}
+    nav.main-nav a.active{color:var(--primary-orange)}
+
+    /* Mobile menu toggle */
+    .menu-toggle{
+      display:none;
+      background:transparent;
+      border:none;
+      color:#fff;
+      font-weight:700;
+      font-size:16px;
+    }
+
+    /* Layout */
+    .wrap{
+      max-width:1100px;
+      margin:20px auto;
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:28px;
+      padding:0 12px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      background:var(--nav-navy);
+      color:var(--primary-orange);
+      padding:18px;
+      border-radius:4px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+      height:fit-content;
+      /* Make sidebar sticky */
+      position: sticky;
+      top: 130px; /* Height of top-mini + main-nav */
+    }
+    .sidebar h3{font-family:"Merriweather";color:var(--white);margin-bottom:8px}
+    .sidebar ul{list-style:none;margin-top:12px}
+    .sidebar li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+    .sidebar a{color:var(--primary-orange);text-decoration:none;font-weight:700;font-size:13px}
+
+    /* Content */
+    .content{
+      background:var(--white);
+      padding:22px 24px;
+      border-radius:3px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+    .page-title{
+      font-family:"Playfair Display", "Georgia", serif;
+      font-size:44px;
+      color:var(--nav-navy);
+      margin-bottom:18px;
+    }
+    
+    /* Page-specific content styles */
+    .content h2{font-family:"Merriweather",serif;font-size:26px;color:var(--accent-red);margin-bottom:8px;margin-top:16px;}
+    .content p{color:#666;line-height:1.65;margin-bottom:12px}
+    .content ul { list-style-position: inside; margin-left: 10px; margin-bottom: 12px; color: #666; line-height: 1.7; }
+    .content img.page-image {width:100%;height:auto;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.12);margin-bottom:18px;}
+
+
+    /* Footer */
+    footer.site-footer{margin-top:34px;background:var(--nav-navy);color:var(--primary-orange);padding:34px 24px 18px}
+    .footer-grid{max-width:1100px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
+    .footer-grid .col{min-width:220px}
+    .footer-grid a{color:var(--primary-orange);text-decoration:none;font-weight:700}
+    .copyright{background:var(--footer-blue);color:#fff;padding:12px 24px;text-align:center;margin-top:8px;font-size:14px}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .wrap{grid-template-columns:1fr;padding:0 12px}
+      .menu-toggle{display:inline-block}
+      nav.main-nav .menu{display:none}
+      nav.main-nav .menu.open{display:flex;flex-direction:column;gap:10px}
+      .sidebar{
+        display:flex;
+        overflow:auto;
+        gap:12px;
+        padding:12px;
+        /* Unset sticky for horizontal layout */
+        position: static; 
+      }
+      .sidebar ul{display:flex;gap:10px}
+      .sidebar li{border-bottom:0}
+    }
+    @media (max-width:580px){
+      .top-mini .title{font-size:18px}
+      .page-title{font-size:30px}
+      nav.main-nav { top: 61px; } /* Adjust sticky for smaller header */
+      .sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-mini" role="banner">
+    <div class="title">PM SHRI UPPER PRIMARY SCHOOL CHIRAWAK</div>
+    <div class="small-links">
+      <div style="color:var(--accent-purple);font-weight:800">ENGLISH MEDIUM GOVERNMENT SCHOOL</div>
+      <div>
+        <a href="#" title="English">🇬🇧 English</a> |
+        <a href="#" title="Hindi">🇮🇳 Hindi</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">Menu ▾</button>
+    <ul id="main-menu" class="menu">
+      <!-- === Active link is changed === -->
+      <li><a href="index.html">HOME</a></li>
+      <li><a class="active" href="about.html">ABOUT SCHOOL</a></li>
+      <li><a href="staff.html">STAFF</a></li>
+      <li><a href="strength.html">STRENGTH</a></li>
+      <li><a href="science-lab.html">SCIENCE LAB</a></li>
+      <li><a href="activities.html">SCHOOL ACTIVITIES</a></li>
+      <li><a href="media.html">MEDIA HIGHLIGHTS</a></li>
+      <li><a href="meena-manch.html">MEENA MANCH ACTIVITIES</a></li>
+      <li><a href="useful-websites.html">OTHER USEFUL WEBSITES</a></li>
+      <li><a href="e-publication.html">E-PUBLICATION</a></li>
+      <li><a href="video.html">VIDEO</a></li>
+      <li><a href="achievement.html">ACHIEVEMENT</a></li>
+      <li><a href="admission.html">ADMISSION FORM</a></li>
+      <li><a href="elearning.html">E-LEARNING PLATFORM</a></li>
+      <li><a href="visits.html">VISITS</a></li>
+      <li><a href="mdm.html">MDM</a></li>
+      <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrap" role="main">
+
+    <aside class="sidebar" aria-label="Sidebar navigation">
+      <h3>WELCOME</h3>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT SCHOOL</a></li>
+        <li><a href="staff.html">STAFF</a></li>
+        <li><a href="strength.html">STRENGTH</a></li>
+        <li><a href="science-lab.html">SCIENCE LAB</a></li>
+        <li><a href="activities.html">SCHOOL ACTIVITIES</a></li>
+        <li><a href="media.html">MEDIA HIGHLIGHTS</a></li>
+        <li><a href="meena-manch.html">MEENA MANCH ACTIVITIES</a></li>
+        <li><a href="useful-websites.html">OTHER USEFUL WEBSITES</a></li>
+        <li><a href="e-publication.html">E-PUBLICATION</a></li>
+        <li><a href="video.html">VIDEO</a></li>
+        <li><a href="achievement.html">ACHIEVEMENT</a></li>
+        <li><a href="admission.html">ADMISSION FORM</a></li>
+        <li><a href="elearning.html">E-LEARNING PLATFORM</a></li>
+        <li><a href="visits.html">VISITS</a></li>
+        <li><a href="mdm.html">MDM</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+      </ul>
+    </aside>
+
+    <main class="content" id="content">
+      <!-- === New Page Content === -->
+      <div class="page-title">ABOUT OUR SCHOOL</div>
+      
+      <p>Welcome to <strong>PM Shri Composite (1–8) UPS Elampur</strong>, a beacon of educational excellence in Aligarh, Uttar Pradesh. As part of the prestigious PM SHRI initiative, our school is dedicated to providing high-quality, holistic, and inclusive primary education to all students.</p>
+
+      <img class="page-image" src="IMG-20251109-WA0015.jpg" alt="School building exterior" onerror="this.onerror=null;this.src='https://placehold.co/700x350/14294A/FFFFFF?text=School+Image';">
+
+      <h2>Our Mission</h2>
+      <p>Our mission is to nurture young minds, foster creativity, and instill strong values. We aim to create a safe, stimulating, and supportive learning environment where every child can achieve their full potential. We are committed to developing critical thinking, problem-solving skills, and a lifelong love for learning.</p>
+
+      <h2>Our Vision</h2>
+      <p>We envision PM Shri Composite (1–8) UPS Elampur as a model government school, renowned for its academic rigor, innovative teaching practices, and strong community engagement. We strive to empower our students to become responsible, compassionate, and contributing members of society.</p>
+      
+      <h2>Our Facilities</h2>
+      <p>Our school is equipped with modern facilities to support comprehensive learning, including:</p>
+      <ul>
+          <li>A state-of-the-art Science Lab for hands-on experiments.</li>
+          <li>A fully functional Computer Lab to promote digital literacy.</li>
+          <li>A well-stocked library with a wide range of books.</li>
+          <li>Spacious classrooms and a large playground.</li>
+          <li>Dedicated rooms for activities like the Meena Manch.</li>
+      </ul>
+
+    </main>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="col">
+        <h4 style="color:#fff;margin-bottom:8px">Contact</h4>
+        <div style="color:#fff">PM SHRI UPPER PRIMARY SCHOOL CHIRAWAK<br>Aligarh, Uttar Pradesh<br>Phone: +91-XXXXXXXXXX<br>Email: info@pmshrichirawak.edu.in</div>
+      </div>
+
+      <div class="col">
+        <h4 style="color:#fff;margin-bottom:8px">Quick Links</h4>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="admission.html">Admission Form</a>
+          <a href="elearning.html">E-Learning Platform</a>
+          <a href="media.html">Media Highlights</a>
+          <a href="video.html">Video</a>
+        </div>
+      </div>
+
+      <div class="col">
+        <h4 style="color:#fff;margin-bottom:8px">Follow Us</h4>
+        <div style="display:flex;gap:10px;align-items:center">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="X">X</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">© 2025 PM SHRI UPPER PRIMARY SCHOOL CHIRAWAK. All Rights Reserved. &nbsp; &nbsp; Developed by Shashi Teotia, Asst. Teacher</div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('main-menu');
+    toggle && toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // No lightbox on this page
+  </script>
+
+</body>
+</html>

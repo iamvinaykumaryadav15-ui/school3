@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PM SHRI - Alumni style site</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Playfair+Display:wght@700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --nav-deep:#08205a;    /* deep navy */
+      --nav-mid:#142a63;
+      --accent-yellow:#f5b400; /* yellow band */
+      --cta-blue:#0b58ff;     /* bright CTA */
+      --muted:#6b6b6b;
+      --white:#fff;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:"Open Sans",Arial,sans-serif;margin:0;color:#222;background:#fff;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+
+    /* top header & nav */
+    .top-mini{background:#fff;border-bottom:4px solid var(--accent-yellow);position:sticky;top:0;z-index:120}
+    .top-mini .inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
+    .brand{font-family:"Merriweather",serif;font-weight:900;color:var(--nav-deep);font-size:20px}
+    .lang{font-weight:600;color:var(--muted)}
+
+    .white-nav{background:#fff;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+    .white-nav .inner{max-width:var(--max);margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+    .white-nav nav a{margin-right:16px;font-weight:700;color:var(--muted)}
+
+    /* hero */
+    .hero{
+      /* MODIFIED: Changed to full background image */
+      background: linear-gradient(rgba(6,17,55,0.7),rgba(6,17,55,0.7)), url('IMG-20251109-WA0015.jpg') center/cover no-repeat;
+      color:var(--white);
+      /* MODIFIED: Increased padding */
+      padding: 120px 16px 100px;
+    }
+    .hero .inner{
+      max-width:var(--max);
+      margin:0 auto;
+      /* MODIFIED: Removed flex layout */
+      /* display:flex;gap:32px;align-items:center; */
+      padding:0 16px;
+      /* MODIFIED: Added text alignment */
+      text-align: center;
+    }
+    .hero-left{
+      /* MODIFIED: Removed flex:1 */
+      /* flex:1 */
+      max-width: 800px; /* Constrain text width */
+      margin: 0 auto; /* Center text block */
+    }
+    .hero-left h1{font-family:"Playfair Display",serif;font-size:54px;margin:0 0 12px;line-height:1.02}
+    .hero-left p{max-width:780px;color:rgba(255,255,255,0.92);font-size:18px; margin-left:auto; margin-right:auto;}
+    /* REMOVED: hero-right section */
+    /* .hero-right{width:420px}
+    .hero-right img{width:100%;height:320px;object-fit:cover;border-radius:6px;box-shadow:0 12px 36px rgba(0,0,0,.36)} */
+
+    /* yellow CTA band */
+    .yellow-band{background:var(--accent-yellow);text-align:center;padding:18px 16px;font-family:"Merriweather",serif;font-weight:700;color:var(--nav-deep);font-size:22px}
+
+    /* layout */
+    .container{max-width:var(--max);margin:28px auto;padding:0 16px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+    .sidebar{background:var(--nav-deep);color:var(--white);padding:18px;border-radius:8px;position:sticky;top:140px}
+    .sidebar h3{font-family:"Merriweather",serif;margin:0 0 12px}
+    .sidebar ul{list-style:none;padding:0;margin:0}
+    .sidebar li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+    .sidebar a{color:var(--accent-yellow);font-weight:700}
+
+    .main{}
+    .page-title{font-family:"Merriweather",serif;font-size:32px;color:var(--nav-deep);margin:6px 0 12px}
+    .lead{color:var(--muted);max-width:760px}
+
+    /* alternating blocks */
+    .alt{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;margin:26px 0;padding:18px 0;border-top:1px solid rgba(0,0,0,.04)}
+    .alt.rev{grid-template-columns:1fr 1fr}
+    .alt img{width:100%;height:360px;object-fit:cover;border-radius:6px}
+    .alt .text{padding:18px}
+    .alt h3{font-family:"Merriweather";color:var(--nav-deep);font-size:28px;margin:0 0 12px}
+    .alt p{color:var(--muted)}
+
+    /* cards row */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+    .card{background:var(--nav-deep);color:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+    .card img{width:100%;height:180px;object-fit:cover}
+    .card .bd{padding:18px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .card h4{margin:0 0 8px;font-family:"Merriweather"}
+    .card p{color:rgba(255,255,255,.9)}
+    .card .cta{display:inline-block;background:var(--cta-blue);color:#fff;padding:10px 14px;border-radius:6px;font-weight:700}
+
+    /* gallery - REPLACED WITH SLIDER */
+    /* .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:6px;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.08);transition:transform .18s}
+    .gallery img:hover{transform:scale(1.02)} */
+
+    /* NEW SLIDER STYLES */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      margin: 28px 0;
+      border-radius: 8px;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      margin-left: -6px; /* Counteract padding on first item */
+      margin-right: -6px; /* Counteract padding on last item */
+    }
+
+    .slide {
+      /* flex-basis will be set by JS */
+      flex-shrink: 0;
+      padding: 0 6px; /* Re-create gap */
+      box-sizing: border-box;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      transition: transform .18s;
+      display: block;
+    }
+    .slide img:hover {
+      transform: scale(1.02);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      z-index: 10;
+      font-size: 20px;
+      color: var(--nav-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .slider-btn:hover {
+      background: var(--white);
+    }
+    .slider-btn.prev {
+      left: 12px;
+    }
+    .slider-btn.next {
+      right: 12px;
+    }
+    .slider-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* footer */
+    footer.site-footer{background:var(--nav-mid);color:#fff;padding:44px 16px}
+    .footer-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px}
+    .footer h5{font-family:"Merriweather";margin:0 0 12px}
+    .footer a{display:block;color:#e8e8ff;margin-bottom:8px}
+    .footer-bottom{background:var(--nav-deep);color:#fff;text-align:center;padding:18px;margin-top:12px}
+
+    /* back to top */
+    .backtop{position:fixed;right:18px;bottom:18px;background:var(--accent-yellow);color:var(--nav-deep);padding:10px 12px;border-radius:6px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    
+    /* Simple buttons from index.html */
+    .btn-blue{
+      padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:700;color:#fff;display:inline-block;
+      background:var(--cta-blue);
+    }
+     .btn-outline{
+      padding:8px 14px;border-radius:6px;text-decoration:none;font-weight:700;display:inline-block;
+      border:2px solid var(--white);color:var(--white);background:transparent
+    }
+
+    /* responsive */
+    @media(max-width:1000px){
+      .container{grid-template-columns:1fr;padding:0 12px}
+      .sidebar{position:static;top:auto;margin-bottom:18px}
+      .hero-left h1{font-size:36px}
+      .alt{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      /* .gallery{grid-template-columns:repeat(2,1fr)} <-- REMOVED */
+      .hero{padding: 80px 16px 60px;} /* MODIFIED: Adjusted padding */
+    }
+    @media(max-width:640px){
+      .hero-left h1{font-size:36px} /* MODIFIED: Tweaked from 28px */
+      /* REMOVED: hero-right display:none */
+      /* .hero-right{display:none} */
+      .hero{padding:60px 16px 40px} /* MODIFIED: Adjusted padding */
+      /* .gallery{grid-template-columns:1fr} <-- REMOVED */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- top -->
+  <div class="top-mini">
+    <div class="inner">
+      <div class="brand">PM SHRI COMPOSITE (1–8) UPS ELAMPUR</div>
+      <div class="lang">ENGLISH MEDIUM GOVT SCHOOL &nbsp; | &nbsp; 🇬🇧 EN &nbsp; | &nbsp; 🇮🇳 HI</div>
+    </div>
+  </div>
+
+  <div class="white-nav" aria-label="top navigation">
+    <div class="inner">
+      <div style="display:flex;align-items:center;gap:12px">
+        <!-- MODIFIED: Used logo from index.html -->
+        <img src="IMG-20251109-WA0010.jpg" alt="logo" style="height:44px;border-radius:6px" onerror="this.onerror=null;this.src='https://placehold.co/100x44/08205a/FFFFFF?text=Logo'">
+        <nav aria-label="Main">
+          <a href="#">HOME</a>
+          <a href="#" style="margin-left:10px;color:var(--muted)">ABOUT</a>
+          <a href="#" style="margin-left:10px;color:var(--muted)">STAFF</a>
+          <a href="#" style="margin-left:10px;color:var(--muted)">ACTIVITIES</a>
+        </nav>
+      </div>
+      <div>
+        <a href="#" style="font-weight:700;color:var(--muted);margin-right:12px">CONTACT</a>
+        <a href="#" style="font-weight:700;color:var(--muted)">ADMISSION</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <header class="hero" role="banner" aria-label="Hero">
+    <div class="inner">
+      <div class="hero-left">
+        <h1 id="hero-heading">Join our vibrant school community — learning, sports & values</h1>
+        <p>PM Shri Composite (1–8) UPS Elampur blends traditional values with modern pedagogy. Explore our labs, community programs, and student activities designed to develop confident, creative learners.</p>
+        <div style="margin-top:24px"> <!-- MODIFIED: Increased margin -->
+          <a class="btn-blue" href="#">Join Us</a>
+          <a class="btn-outline" href="#" style="margin-left:10px">Visit Campus</a>
+        </div>
+      </div>
+      <!-- REMOVED: hero-right div -->
+    </div>
+  </header>
+
+  <!-- yellow CTA -->
+  <div class="yellow-band">Join Our Community • Admissions open for 2025-26 • Visit & Apply Today</div>
+
+  <!-- main -->
+  <div class="container" role="main">
+    <aside class="sidebar" aria-label="Sidebar">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About School</a></li>
+        <li><a href="#">Staff</a></li>
+        <li><a href="#">Strength</a></li>
+        <li><a href="#">Science Lab</a></li>
+        <li><a href="#">School Activities</a></li>
+        <li><a href="#">Media Highlights</a></li>
+        <li><a href="#">Meena Manch</a></li>
+        <li><a href="#">E-Publication</a></li>
+        <li><a href="#">Video</a></li>
+        <li><a href="#">Admission Form</a></li>
+        <li><a href="#">E-Learning</a></li>
+        <li><a href="#">Visits</a></li>
+        <li><a href="#">MDM</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </aside>
+
+    <section class="main">
+      <h2 class="page-title">HOME</h2>
+      <p class="lead">Welcome to <strong>PM Shri Composite (1–8) UPS Elampur</strong>. Discover our programs, labs, and activities designed to help students grow academically, socially and personally.</p>
+
+      <!-- alternating blocks -->
+      <div class="alt" aria-labelledby="alt1">
+        <!-- MODIFIED: Used gallery image from index.html -->
+        <div><img src="IMG-20251109-WA0022.jpg" alt="students outdoors" onerror="this.onerror=null;this.src='https://placehold.co/800x480/eeeeee/333?text=Image'"></div>
+        <div class="text">
+          <h3 id="alt1">Connect with Students & Alumni</h3>
+          <p>Our alumni network and student clubs provide mentoring, career guidance and opportunities for community engagement. Join activities and events throughout the year.</p>
+        </div>
+      </div>
+
+      <div class="alt" aria-labelledby="alt2" style="grid-template-columns:1fr 1fr">
+        <div class="text">
+          <h3 id="alt2">Get Involved</h3>
+          <p>Be part of school activities, help organize events, and support community programs like Meena Manch that build leadership among students.</p>
+        </div>
+        <!-- MODIFIED: Used gallery image from index.html -->
+        <div><img src="IMG-20251109-WA0019.jpg" alt="students meeting" onerror="this.onerror=null;this.src='https://placehold.co/800x480/eeeeee/333?text=Image'"></div>
+      </div>
+
+      <!-- cards -->
+      <div class="cards" aria-label="Highlights">
+        <div class="card">
+          <!-- MODIFIED: Used gallery image from index.html -->
+          <img src="IMG-20251109-WA0008.jpg" alt="card 1" onerror="this.onerror=null;this.src='https://placehold.co/800x480/14294A/FFFFFF?text=Card'">
+          <div class="bd">
+            <div>
+              <h4>Find an Education Agent</h4>
+              <p>Connect with partners and learn admission steps and eligibility.</p>
+            </div>
+            <a class="cta" href="#">View Agents</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- MODIFIED: Used gallery image from index.html -->
+          <img src="IMG-20251109-WA0012.jpg" alt="card 2" onerror="this.onerror=null;this.src='https://placehold.co/800x480/14294A/FFFFFF?text=Card'">
+          <div class="bd">
+            <div>
+              <h4>Discover Our Campus</h4>
+              <p>Explore our facilities, science and computer labs, and student spaces.</p>
+            </div>
+            <a class="cta" href="#">Discover</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- MODIFIED: Used gallery image from index.html -->
+          <img src="IMG-20251109-WA0013.jpg" alt="card 3" onerror="this.onerror=null;this.src='https://placehold.co/800x480/14294A/FFFFFF?text=Card'">
+          <div class="bd">
+            <div>
+              <h4>Scholarships</h4>
+              <p>Information on scholarships and support programs for students.</p>
+            </div>
+            <a class="cta" href="#">View Scholarships</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- video -->
+      <div style="max-width:900px;margin:22px auto">
+        <div style="background:#000;border-radius:6px;overflow:hidden">
+          <!-- MODIFIED: Used video ID from index.html -->
+          <iframe width="100%" height="420" src="https://www.youtube.com/embed/M7lc1qf-aN0" title="School video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- gallery -->
+      <h3 style="font-family:'Merriweather',serif;color:var(--nav-deep)">OUR SCHOOL IN PICTURES</h3>
+      <!-- MODIFIED: Replaced .gallery with .slider-container -->
+      <div class="slider-container" id="gallery-slider">
+        <div class="slider-track" id="slider-track">
+          <!-- MODIFIED: Added .slide wrapper -->
+          <div class="slide">
+            <img src="IMG-20251109-WA0024.jpg" alt="Gallery Image 1" data-full="IMG-20251109-WA0024.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G1'">
+          </div>
+          <div class="slide">
+            <img src="IMG-20251109-WA0023.jpg" alt="Gallery Image 2" data-full="IMG-20251109-WA0023.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G2'">
+          </div>
+          <div class="slide">
+            <img src="IMG-20251109-WA0018.jpg" alt="Gallery Image 3" data-full="IMG-20251109-WA0018.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G3'">
+          </div>
+          <!-- ADDED: More slides for sliding to be useful -->
+          <div class="slide">
+            <img src="IMG-20251109-WA0022.jpg" alt="Gallery Image 4" data-full="IMG-20251109-WA0022.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G4'">
+          </div>
+          <div class="slide">
+            <img src="IMG-20251109-WA0019.jpg" alt="Gallery Image 5" data-full="IMG-20251109-WA0019.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G5'">
+          </div>
+          <div class="slide">
+            <img src="IMG-20251109-WA0008.jpg" alt="Gallery Image 6" data-full="IMG-20251109-WA0008.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/eeeeee/333?text=G6'">
+          </div>
+        </div>
+        <!-- ADDED: Slider buttons -->
+        <button class="slider-btn prev" id="slide-prev" aria-label="Previous slide">‹</button>
+        <button class="slider-btn next" id="slide-next" aria-label="Next slide">›</button>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div style="font-family:'Merriweather',serif;font-weight:900;margin-bottom:6px">PM SHRI COMPOSITE (1–8) UPS ELAMPUR</div>
+        <p style="color:#e6e6ff">Creating holistic and well-rounded individuals equipped with key 21st Century skills.</p>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <a href="#" style="background:rgba(255,255,255,.06);padding:8px;border-radius:6px;color:#fff">FB</a>
+          <a href="#" style="background:rgba(255,255,255,.06);padding:8px;border-radius:6px;color:#fff">IG</a>
+          <a href="#" style="background:rgba(255,255,255,.06);padding:8px;border-radius:6px;color:#fff">YT</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <h5>Study & Admission</h5>
+        <a href="#">How to apply</a>
+        <a href="#">Admission form</a>
+        <a href="#">E-Learning</a>
+      </div>
+
+      <div class="footer">
+        <h5>Campus & Support</h5>
+        <a href="#">Science Lab</a>
+        <a href="#">Computer Labs</a>
+        <a href="#">Meena Manch</a>
+      </div>
+
+      <div class="footer">
+        <h5>Contact</h5>
+        <a href="#">Elampur, Aligarh, UP</a>
+        <a href="tel:+911234567890">+91-1234567890</a>
+        <a href="mailto:info@pmshrielampur.edu.in">info@pmshrielampur.edu.in</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">© 2025 PM SHRI COMPOSITE (1–8) UPS ELAMPUR. All rights reserved. &nbsp; | &nbsp; Developed by Shashi Teotia</div>
+  </footer>
+
+  <a class="backtop" href="#hero-heading" id="backTop" aria-label="Back to top">Top ↑</a>
+
+  <!-- lightbox -->
+  <div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.86);z-index:9999">
+    <button id="lbClose" style="position:absolute;top:18px;right:18px;background:transparent;color:#fff;border:0;font-size:28px;cursor:pointer">✕</button>
+    <img id="lbImage" src="" alt="Expanded image" style="max-width:95%;max-height:90%;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.6)">
+  </div>
+
+  <script>
+    // gallery lightbox
+    /* COMMENTED OUT OLD GALLERY LISTENER
+    document.getElementById('gallery')?.addEventListener('click', function(e){
+      const img = e.target.closest('img'); if(!img) return;
+      const src = img.dataset.full || img.src;
+      document.getElementById('lbImage').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+    */
+    document.getElementById('lbClose')?.addEventListener('click', function(){ document.getElementById('lightbox').style.display='none'; document.body.style.overflow='';});
+    document.getElementById('lightbox')?.addEventListener('click', function(e){ if(e.target===this){ this.style.display='none'; document.body.style.overflow=''; }});
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { document.getElementById('lightbox').style.display='none'; document.body.style.overflow=''; }});
+
+    // back to top
+    document.getElementById('backTop')?.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+    
+    // --- NEW SLIDER SCRIPT ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('slider-track');
+      const prevBtn = document.getElementById('slide-prev');
+      const nextBtn = document.getElementById('slide-next');
+      
+      if (!track || !prevBtn || !nextBtn) return; // Exit if elements not found
+
+      let currentIndex = 0;
+      const slides = Array.from(track.children);
+      if (slides.length === 0) return; // No slides
+
+      let slidesToView = 3;
+      
+      const updateSlidesToView = () => {
+        if (window.innerWidth <= 640) {
+          slidesToView = 1;
+        } else if (window.innerWidth <= 1000) {
+          slidesToView = 2;
+        } else {
+          slidesToView = 3;
+        }
+        // Update flex-basis on slides
+        slides.forEach(slide => {
+          slide.style.flexBasis = `calc(100% / ${slidesToView})`;
+        });
+      };
+
+      const updateSlidePosition = () => {
+        if (!track.parentElement) return; // Exit if parent isn't rendered
+        
+        // Ensure track width is calculated correctly
+        const containerWidth = track.parentElement.clientWidth;
+        const slideWidth = containerWidth / slidesToView;
+        
+        // Ensure index is valid after resize
+        const maxIndex = Math.max(0, slides.length - slidesToView);
+        if (currentIndex > maxIndex) {
+          currentIndex = maxIndex;
+        }
+        
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+      };
+
+      // Initial setup
+      updateSlidesToView();
+      updateSlidePosition();
+
+      // Recalculate on resize
+      window.addEventListener('resize', () => {
+        updateSlidesToView();
+        updateSlidePosition();
+      });
+
+      // Event Listeners for buttons
+      nextBtn.addEventListener('click', () => {
+        const maxIndex = Math.max(0, slides.length - slidesToView);
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateSlidePosition();
+        }
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlidePosition();
+        }
+      });
+
+      // Also re-use lightbox for slider images
+      track.addEventListener('click', function(e){
+        const img = e.target.closest('img'); if(!img) return;
+        const src = img.dataset.full || img.src;
+        document.getElementById('lbImage').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    // --- END SLIDER SCRIPT ---
+
+  </script>
+
+</body>
+</html>

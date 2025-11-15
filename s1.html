@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PM SHRI COMPOSITE (1-8) UPS ELAMPUR</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Playfair+Display:wght@700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Brand colors and basics ---------- */
+    :root{
+      --ad-dark:#15123a;         /* deep navy hero/footer */
+      --ad-mid:#1f2250;         /* mid navy */
+      --primary:#1148ff;        /* bright blue CTA (Adelaide-like) */
+      --accent-orange:#F7931E;  /* your existing orange for small accents */
+      --muted:#6b6b6b;
+      --white:#ffffff;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:"Open Sans",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;color:#222;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+
+    /* ---------- Top mini header ---------- */
+    .top-mini{background:#fff;border-bottom:4px solid var(--accent-orange);position:sticky;top:0;z-index:120}
+    .top-mini .inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand-title{font-family:"Merriweather",serif;font-weight:900;color:var(--ad-dark);font-size:20px}
+    .top-links{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted)}
+
+    /* ---------- Main nav (white bar) ---------- */
+    .white-nav{background:#fff;box-shadow:0 1px 0 rgba(0,0,0,0.06)}
+    .white-nav .inner{max-width:var(--max-width);margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+    .white-nav .right a{margin-left:12px;color:var(--muted);font-weight:600}
+
+    /* ---------- Hero (split) ---------- */
+    .hero{display:flex;background:var(--ad-dark);color:var(--white);align-items:stretch}
+    .hero .inner{max-width:var(--max-width);margin:0 auto;display:flex;width:100%;align-items:stretch;padding:28px 16px;gap:32px}
+    .hero-left{flex:1;padding:12px 6px;display:flex;flex-direction:column;justify-content:center}
+    .hero-left h1{font-family:"Playfair Display",serif;font-size:54px;margin:0 0 12px;line-height:1;color:#fff}
+    .hero-left p{color:rgba(255,255,255,.9);max-width:680px;margin:0 0 18px;font-size:18px}
+    .hero-left .cta{display:flex;gap:12px}
+    .btn-blue{background:var(--primary);color:#fff;padding:12px 20px;border-radius:6px;font-weight:700;display:inline-block;box-shadow:0 6px 18px rgba(17,72,255,0.12)}
+    .btn-outline{border:2px solid rgba(255,255,255,.18);color:#fff;padding:10px 18px;border-radius:6px;font-weight:700}
+
+    .hero-right{width:46%;min-width:320px;display:flex;align-items:center;justify-content:center}
+    .hero-right img{width:100%;height:320px;object-fit:cover;border-radius:6px;box-shadow:0 12px 36px rgba(0,0,0,0.4)}
+
+    /* ---------- main body layout ---------- */
+    .container{max-width:var(--max-width);margin:26px auto;padding:0 16px;display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start}
+    /* left sidebar */
+    .sidebar{background:var(--ad-mid);padding:20px;border-radius:4px;color:var(--white);position:sticky;top:160px}
+    .sidebar h3{font-family:"Merriweather",serif;margin:0 0 12px;font-size:18px}
+    .sidebar ul{list-style:none;padding:0;margin:0}
+    .sidebar li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .sidebar a{color:var(--accent-orange);font-weight:700}
+
+    /* content */
+    .main{background:var(--white);padding:8px 0}
+    .page-title{font-family:"Merriweather",serif;font-size:34px;color:var(--ad-dark);margin:6px 0 18px}
+    .lead{color:var(--muted);max-width:780px;font-size:16px}
+
+    /* ---------- Feature cards row (3 columns) ---------- */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:22px 0}
+    .card{background:var(--ad-mid);color:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;min-height:320px}
+    .card img{width:100%;height:180px;object-fit:cover}
+    .card-body{padding:18px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .card h4{margin:0 0 8px;font-family:"Merriweather";font-size:20px}
+    .card p{color:rgba(255,255,255,0.9);margin:0 0 12px}
+    .card .card-cta{display:inline-block;background:#1f6bff;padding:10px 14px;border-radius:6px;color:#fff;font-weight:700}
+
+    /* ---------- Gallery (grid) ---------- */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+    .gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:6px;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.12);transition:transform .18s}
+    .gallery-grid img:hover{transform:scale(1.02)}
+
+    /* ---------- Footer multi-column ---------- */
+    footer.site-footer{background:var(--ad-mid);color:#fff;padding:36px 16px;margin-top:30px}
+    .footer-inner{max-width:var(--max-width);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:22px;align-items:start}
+    .footer-logo{font-family:"Merriweather";font-weight:900;color:#fff;font-size:18px;margin-bottom:10px}
+    .footer-col h5{color:#fff;margin:0 0 12px;font-family:"Merriweather";font-size:16px}
+    .footer-col a{display:block;color:#e6e6ff;margin-bottom:8px;text-decoration:none}
+    .footer-bottom{background:var(--ad-dark);color:#fff;padding:20px;text-align:center;font-size:14px;margin-top:12px}
+
+    /* social icon row */
+    .socials{display:flex;gap:12px;margin-top:8px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:rgba(255,255,255,0.06);color:#fff}
+
+    /* small devices */
+    @media (max-width:1000px){
+      .hero-right{display:none}
+      .container{grid-template-columns:1fr; padding:0 12px}
+      .sidebar{position:static;top:auto}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-inner{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .hero-left h1{font-size:34px}
+      .cards{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr}
+    }
+
+    /* small util */
+    .muted{color:var(--muted)}
+    .hr{height:1px;background:rgba(0,0,0,0.06);margin:18px 0}
+    .backtop{position:fixed;right:18px;bottom:18px;background:#fff;border-radius:6px;padding:8px 12px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 20px rgba(0,0,0,0.08);font-weight:700}
+  </style>
+</head>
+<body>
+
+  <!-- top mini header -->
+  <div class="top-mini" role="banner">
+    <div class="inner">
+      <div class="brand-title">PM SHRI COMPOSITE (1–8) UPS ELAMPUR, ALIGARH(UP)</div>
+      <div class="top-links">
+        ENGLISH MEDIUM GOVERNMENT SCHOOL&nbsp;|&nbsp;
+        <span class="muted">🇬🇧 English</span>&nbsp;|&nbsp;<span class="muted">🇮🇳 Hindi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- thin white nav -->
+  <div class="white-nav" aria-label="top nav">
+    <div class="inner">
+      <div style="display:flex;align-items:center;gap:18px">
+        <!-- MODIFIED: Image path updated -->
+        <img src="IMG-20251109-WA0010.jpg" alt="logo" style="height:42px;object-fit:contain;border-radius:6px" onerror="this.onerror=null;this.src='https://placehold.co/100x42/15123a/FFFFFF?text=Logo'">
+        <nav aria-label="Main menu" style="display:flex;gap:12px;align-items:center">
+          <a href="#" style="font-weight:700;color:var(--ad-dark)">HOME</a>
+          <a href="#" class="muted">ABOUT</a>
+          <a href="#" class="muted">STAFF</a>
+          <a href="#" class="muted">ACTIVITIES</a>
+        </nav>
+      </div>
+
+      <div class="right" style="display:flex;align-items:center;gap:14px">
+        <a href="#" class="muted">Contact</a>
+        <a href="#" class="muted">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="inner">
+      <div class="hero-left">
+        <h1 id="hero-heading">Empowering young learners,<br>building brighter futures</h1>
+        <p>PM Shri Composite (1–8) UPS Elampur is a government primary school under the PM SHRI initiative. We deliver caring, value-based education and modern digital learning facilities to prepare students for the 21st century.</p>
+        <div class="cta">
+          <a class="btn-blue" href="#">How to Apply</a>
+          <a class="btn-outline" href="#">Visit &amp; Contact</a>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <!-- MODIFIED: Image path updated -->
+        <img src="IMG-20251109-WA0015.jpg" alt="School mural / campus" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Hero+Image'">
+      </div>
+    </div>
+  </section>
+
+  <!-- main content area (sidebar + content) -->
+  <div class="container" role="main">
+
+    <!-- sidebar navigation -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <h3>WELCOME</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About School</a></li>
+        <li><a href="#">Staff</a></li>
+        <li><a href="#">Strength</a></li>
+        <li><a href="#">Science Lab</a></li>
+        <li><a href="#">School Activities</a></li>
+        <li><a href="#">Media Highlights</a></li>
+        <li><a href="#">Meena Manch Activities</a></li>
+        <li><a href="#">E-Publication</a></li>
+        <li><a href="#">Video</a></li>
+        <li><a href="#">Admission Form</a></li>
+        <li><a href="#">E-Learning</a></li>
+        <li><a href="#">Visits</a></li>
+        <li><a href="#">MDM</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </aside>
+
+    <!-- main -->
+    <section class="main" aria-label="Main content">
+
+      <h2 class="page-title">HOME</h2>
+
+      <p class="lead">Welcome to <strong>PM Shri Composite (1–8) UPS Elampur</strong>. We combine traditional values with modern teaching, well-equipped science & ICT labs, extracurricular programs and Meena Manch activities to nurture confident, capable students.</p>
+
+      <div class="hr"></div>
+
+      <!-- three feature cards -->
+      <div class="cards" aria-label="Highlights">
+        <div class="card">
+          <!-- MODIFIED: Image path updated -->
+          <img src="IMG-20251109-WA0008.jpg" alt="card image 1" onerror="this.onerror=null;this.src='https://placehold.co/800x480/1f2250/ffffff?text=Image'">
+          <div class="card-body">
+            <div>
+              <h4>Find an Education Agent</h4>
+              <p>Get in touch with local education partners and learn about admissions and programs.</p>
+            </div>
+            <div><a class="card-cta" href="#">View Agents</a></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- MODIFIED: Image path updated -->
+          <img src="IMG-20251109-WA0012.jpg" alt="card image 2" onerror="this.onerror=null;this.src='https://placehold.co/800x480/1f2250/ffffff?text=Image'">
+          <div class="card-body">
+            <div>
+              <h4>Discover Our Campus</h4>
+              <p>Explore our campus spaces, facilities and learning environments through images and videos.</p>
+            </div>
+            <div><a class="card-cta" href="#">Discover</a></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- MODIFIED: Image path updated -->
+          <img src="IMG-20251109-WA0013.jpg" alt="card image 3" onerror="this.onerror=null;this.src='https.placehold.co/800x480/1f2250/ffffff?text=Image'">
+          <div class="card-body">
+            <div>
+              <h4>Scholarships & Support</h4>
+              <p>Information on awards and support for students. Learn about eligibility and applications.</p>
+            </div>
+            <div><a class="card-cta" href="#">View Scholarships</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <!-- embedded video (center) -->
+      <div style="margin:18px 0">
+        <div style="max-width:900px;margin:0 auto;background:#000;border-radius:6px;overflow:hidden">
+          <!-- MODIFIED: Video ID updated -->
+          <iframe width="100%" height="450" src="https://www.youtube.com/embed/M7lc1qf-aN0" title="School video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <!-- gallery -->
+      <h3 style="font-family:'Merriweather',serif;color:var(--ad-dark)">OUR SCHOOL IN PICTURES</h3>
+      <div class="gallery-grid" id="galleryGrid" aria-label="Photo gallery">
+        <!-- MODIFIED: Image paths updated -->
+        <img src="IMG-20251109-WA0024.jpg" alt="gallery 1" data-full="IMG-20251109-WA0024.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+1'">
+        <img src="IMG-20251109-WA0023.jpg" alt="gallery 2" data-full="IMG-20251109-WA0023.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+2'">
+        <img src="IMG-20251109-WA0018.jpg" alt="gallery 3" data-full="IMG-20251109-WA0018.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+3'">
+        <img src="IMG-20251109-WA0022.jpg" alt="gallery 4" data-full="IMG-20251109-WA0022.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+4'">
+        <img src="IMG-20251109-WA0019.jpg" alt="gallery 5" data-full="IMG-20251109-WA0019.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+5'">
+        <img src="IMG-20251109-WA0008.jpg" alt="gallery 6" data-full="IMG-20251109-WA0008.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x360/14294A/FFFFFF?text=Gallery+6'">
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="muted">Visit our pages for <strong>Admission</strong>, <strong>Science Lab</strong>, <strong>Computer Labs</strong>, <strong>Meena Manch</strong> activities and more.</p>
+
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">PM SHRI COMPOSITE (1–8) UPS ELAMPUR</div>
+        <p class="muted">Creating holistic and well-rounded individuals equipped with key 21st Century skills.</p>
+        <div class="socials" aria-label="social links">
+          <a href="#" title="facebook">f</a>
+          <a href="#" title="instagram">ig</a>
+          <a href="#" title="youtube">yt</a>
+          <a href="#" title="x">x</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Study & Admission</h5>
+        <a href="#">How to apply</a>
+        <a href="#">Admission form</a>
+        <a href="#">E-Learning</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Campus & Support</h5>
+        <a href="#">Science Lab</a>
+        <a href="#">Computer Labs</a>
+        <a href="#">Meena Manch</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="#">Address: Elampur, Aligarh, UP</a>
+        <a href="tel:+911234567890">Phone: +91-1234567890</a>
+        <a href="mailto:info@pmshrielampur.edu.in">info@pmshrielampur.edu.in</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div style="max-width:var(--max-width);margin:0 auto">
+        <div style="max-width:1000px;margin:0 auto;color:#fff;">
+          © 2025 PM SHRI COMPOSITE (1–8) UPS ELAMPUR. All rights reserved. &nbsp; | &nbsp; Developed by Shashi Teotia, Asst. Teacher
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a class="backtop" href="#hero-heading" aria-label="Back to top">Back to top ↑</a>
+
+  <!-- Lightbox modal for gallery -->
+  <div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);z-index:9999">
+    <button id="lbClose" style="position:absolute;top:18px;right:18px;background:transparent;color:#fff;border:0;font-size:28px;cursor:pointer">✕</button>
+    <img id="lbImage" src="" alt="expanded" style="max-width:95%;max-height:90%;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.6)">
+  </div>
+
+  <script>
+    // gallery lightbox
+    document.getElementById('galleryGrid')?.addEventListener('click', function(e){
+      const img = e.target.closest('img'); if(!img) return;
+      const src = img.dataset.full || img.src;
+      const lb = document.getElementById('lightbox'); document.getElementById('lbImage').src = src; lb.style.display='flex';
+      document.body.style.overflow='hidden';
+    });
+    document.getElementById('lbClose')?.addEventListener('click',function(){ document.getElementById('lightbox').style.display='none'; document.body.style.overflow='';});
+    document.getElementById('lightbox')?.addEventListener('click', function(e){ if(e.target===this) { this.style.display='none'; document.body.style.overflow=''; }});
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ document.getElementById('lightbox').style.display='none'; document.body.style.overflow=''; }});
+
+    // smooth back-to-top
+    document.querySelector('.backtop')?.addEventListener('click',function(e){ e.preventDefault(); document.querySelector('#hero-heading')?.scrollIntoView({behavior:'smooth'});});
+  </script>
+</body>
+</html>
